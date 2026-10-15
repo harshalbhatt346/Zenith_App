@@ -35,6 +35,7 @@ app = FastAPI(
     title="Zenith '26 Fest Management System API",
     description="API backend for Zenith '26 College Fest Management System",
     version="1.0.0",
+    redirect_slashes=False,
 )
 
 # Enable CORS for local development
