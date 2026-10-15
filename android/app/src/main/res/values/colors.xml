@@ -1,0 +1,44 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <!-- Brand Purple & Indigo -->
+    <color name="brand_purple_50">#F5F3FF</color>
+    <color name="brand_purple_100">#EDE9FE</color>
+    <color name="brand_purple_500">#8B5CF6</color>
+    <color name="brand_purple_600">#7C3AED</color>
+    <color name="brand_purple_700">#6D28D9</color>
+    <color name="brand_purple_900">#4C1D95</color>
+    <color name="brand_indigo_900">#312E81</color>
+
+    <!-- Slate Neutrals -->
+    <color name="slate_50">#F8FAFC</color>
+    <color name="slate_100">#F1F5F9</color>
+    <color name="slate_200">#E2E8F0</color>
+    <color name="slate_300">#CBD5E1</color>
+    <color name="slate_400">#94A3B8</color>
+    <color name="slate_500">#64748B</color>
+    <color name="slate_600">#475569</color>
+    <color name="slate_700">#334155</color>
+    <color name="slate_800">#1E293B</color>
+    <color name="slate_900">#0F172A</color>
+
+    <!-- Semantic Alerts & Categories -->
+    <color name="rose_50">#FFF1F2</color>
+    <color name="rose_100">#FFE4E6</color>
+    <color name="rose_500">#F43F5E</color>
+    <color name="rose_600">#E11D48</color>
+    <color name="rose_800">#9F1239</color>
+
+    <color name="emerald_50">#ECFDF5</color>
+    <color name="emerald_100">#D1FAE5</color>
+    <color name="emerald_600">#059669</color>
+    <color name="emerald_800">#065F46</color>
+
+    <color name="blue_100">#DBEAFE</color>
+    <color name="blue_800">#1E40AF</color>
+
+    <color name="amber_100">#FEF3C7</color>
+    <color name="amber_800">#92400E</color>
+
+    <color name="white">#FFFFFF</color>
+    <color name="black">#000000</color>
+</resources>

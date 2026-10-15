@@ -1,0 +1,32 @@
+# Python Virtual Environment
+venv/
+ENV/
+env/
+
+# Python Cache
+__pycache__/
+*.py[cod]
+*$py.class
+
+# Local Database
+fest.db
+
+# Vercel CLI cache
+.vercel/
+
+# Environment variables
+.env
+.env.local
+
+# Android build outputs and caches
+android/.gradle/
+android/build/
+android/app/build/
+android/.idea/
+android/local.properties
+*.apk
+!zenith26-fest.apk
+
+# OS generated
+.DS_Store
+Thumbs.db

@@ -1,0 +1,21 @@
+# Android project and compiled APK
+android/
+*.apk
+
+# Python virtual environment & caches
+venv/
+__pycache__/
+*.pyc
+*.pyo
+
+# Local SQLite database (PostgreSQL is used on Vercel)
+fest.db
+
+# Documentation and office files
+*.docx
+
+# IDE and git files
+.git/
+.idea/
+.vscode/
+.vercel/
