@@ -40,10 +40,8 @@ def seed_events() -> int:
     # Check if data/events_seed.xlsx exists
     if not DATA_FILE.exists():
         conn.close()
-        raise FileNotFoundError(
-            f"Seed data file not found at '{DATA_FILE}'. "
-            "Please copy the provided events_seed.xlsx file into the data/ folder before running this script."
-        )
+        print(f"[SEED] Seed data file not found at '{DATA_FILE}'. Skipping initial Excel seed.", file=sys.stderr)
+        return 0
 
     wb = openpyxl.load_workbook(DATA_FILE)
     if "Events" not in wb.sheetnames:

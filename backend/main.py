@@ -50,7 +50,11 @@ app.add_middleware(
 @app.on_event("startup")
 def startup_event():
     """Initializes the database and seeds events on startup."""
-    init_db()
+    try:
+        init_db()
+    except Exception as e:
+        print(f"[STARTUP ERROR] Database initialization failed: {e}", file=sys.stderr)
+
     try:
         count = seed_events()
         print(f"[STARTUP] Database ready with {count} events.")
@@ -478,23 +482,34 @@ def cancel_registration(registration_id: int):
 # ==========================================
 
 FRONTEND_DIR = PROJECT_ROOT / "frontend"
+JS_DIR = FRONTEND_DIR / "js"
 
-# Mount /js directory for script files
-app.mount("/js", StaticFiles(directory=FRONTEND_DIR / "js"), name="js")
+# Mount /js directory for script files if it exists
+if JS_DIR.is_dir():
+    app.mount("/js", StaticFiles(directory=JS_DIR), name="js")
 
 
 @app.get("/", include_in_schema=False)
 def serve_index():
     """Serves the student portal."""
-    return FileResponse(FRONTEND_DIR / "index.html")
+    index_file = FRONTEND_DIR / "index.html"
+    if index_file.is_file():
+        return FileResponse(index_file)
+    return {"message": "Zenith '26 Fest Management System API", "docs": "/docs"}
 
 
 @app.get("/index.html", include_in_schema=False)
 def serve_index_html():
-    return FileResponse(FRONTEND_DIR / "index.html")
+    index_file = FRONTEND_DIR / "index.html"
+    if index_file.is_file():
+        return FileResponse(index_file)
+    return {"message": "Zenith '26 Fest Management System API", "docs": "/docs"}
 
 
 @app.get("/admin.html", include_in_schema=False)
 def serve_admin():
     """Serves the admin dashboard."""
-    return FileResponse(FRONTEND_DIR / "admin.html")
+    admin_file = FRONTEND_DIR / "admin.html"
+    if admin_file.is_file():
+        return FileResponse(admin_file)
+    return {"message": "Zenith '26 Admin Portal", "docs": "/docs"}

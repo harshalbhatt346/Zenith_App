@@ -4,8 +4,11 @@ import sqlite3
 from pathlib import Path
 from typing import Any, Optional, Tuple, Union
 
-# Database path for local SQLite fallback
-DB_PATH = Path(__file__).resolve().parent.parent / "fest.db"
+# Database path for local SQLite fallback (uses /tmp on serverless like Vercel/Lambda)
+if os.getenv("VERCEL") or os.getenv("AWS_LAMBDA_FUNCTION_NAME"):
+    DB_PATH = Path("/tmp/fest.db")
+else:
+    DB_PATH = Path(__file__).resolve().parent.parent / "fest.db"
 
 
 def get_database_url() -> Optional[str]:
@@ -147,7 +150,10 @@ def get_db_connection():
         return PostgresConnectionWrapper(raw_conn)
 
     # SQLite local fallback
-    conn = sqlite3.connect(DB_PATH)
+    try:
+        conn = sqlite3.connect(DB_PATH)
+    except sqlite3.OperationalError:
+        conn = sqlite3.connect(Path("/tmp/fest.db"))
     conn.row_factory = sqlite3.Row
     conn.execute("PRAGMA foreign_keys = ON;")
     return conn
